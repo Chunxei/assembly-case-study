@@ -1,13 +1,14 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import Header from "~/components/Header";
+import SearchList from "~/components/SearchList";
+import { useLoaderData } from "react-router";
 
 export default function Home() {
-  return <Welcome />;
+  useLoaderData
+  return (
+    <div className="w-full min-h-screen flex flex-col">
+      <Header />
+      <SearchList />
+    </div>
+  )
 }
