@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useMemo, useState } from "react"
+import { FC, PropsWithChildren, useMemo } from "react"
 
 
 interface Props {
@@ -21,8 +21,6 @@ const PaginationButton: FC<{disabled: boolean, href: string} & PropsWithChildren
 }
 
 const Pagination: React.FC<Props> = ({page, itemsPerPage, totalItems, urlSearch}) => {
-  const [elapsed] = useState(page * itemsPerPage)
-
   const isFirstPage = useMemo(() => page <= 1, [page])
   const isLastPage = useMemo(() => page >= (totalItems / itemsPerPage), [page, itemsPerPage, totalItems])
 
