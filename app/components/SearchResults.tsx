@@ -1,8 +1,5 @@
 import SearchListItem from "./SearchListItem"
 
-
-type ListState = 'loading' | 'ready'
-
 interface Props {
   loading: boolean
   message: string
