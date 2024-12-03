@@ -26,7 +26,7 @@ const Header: React.FC = () => {
   useLayoutEffect(() => {
     const params = new URLSearchParams(location.search)
 
-    const prevSearch = params.get('search') ?? ''
+    const prevSearch = (params.get('search') ?? '').trim()
     setSearch(decodeURIComponent(prevSearch))
 
     const prevCategory = decodeURIComponent(params.get('category') ?? '').toLowerCase()
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
           ))}
         </fieldset>
 
-        <button className="appearance-none h-full flex justify-center md:justify-start items-center w-full md:w-max px-6 py-2 bg-blue-600 rounded-md">Search</button>
+        <button className="appearance-none h-full flex justify-center md:justify-start items-center w-full md:w-max px-6 py-2 bg-blue-600 rounded-md disabled:bg-slate-600" disabled={!search.trim().length} >Search</button>
       </form>
     </header>
   );

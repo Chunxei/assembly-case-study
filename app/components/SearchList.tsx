@@ -37,7 +37,7 @@ const SearchList: React.FC<{}> = (props) => {
   useEffect(() => {
     const params = new URLSearchParams(location.search)
 
-    const search = params.get('search') ?? ''
+    const search = (params.get('search') ?? '').trim()
     const _category = decodeURIComponent(params.get('category') ?? '').toLowerCase()
     const category = isGithubCategory(_category) ? _category : 'user'
     const pageNo = parseInt(params.get('page') ?? '') || 1
