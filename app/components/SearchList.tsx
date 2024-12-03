@@ -14,7 +14,7 @@ const SearchList: React.FC<{}> = (props) => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(1)
-  const showPagination = useMemo(() => RESULTS_PER_PAGE * page <= (searchResult?.total_count ?? 0), [page, searchResult])
+  const showPagination = useMemo(() => !!searchResult?.items.length, [searchResult])
 
   const handleSearch = async (search: string, category: GithubCategoryListItem['value'], pageNo: number) => {
     setLoading(true)
