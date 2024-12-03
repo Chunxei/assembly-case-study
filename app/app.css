@@ -24,4 +24,5 @@
 html,
 body {
   @apply bg-gray-950 text-[#efefef];
+  scrollbar-gutter: stable both-edges;
 }
