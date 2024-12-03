@@ -4,7 +4,8 @@ import { GithubCategory, UsersResponse } from "./types";
 export async function fetchJSON<T>(url: string, headers?: RequestInit['headers']) {
   try {
     const response = await fetch(url, {headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      ...headers,
     }})
 
     if (!response.ok) {
