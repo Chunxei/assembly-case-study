@@ -3,8 +3,6 @@ import { useLocation } from "react-router";
 import { GITHUB_CATEGORIES } from "~/utils/constants";
 import { isGithubCategory } from "~/utils/helpers";
 
-import { GithubCategoryListItem } from "~/utils/types";
-
 const Header: React.FC = () => {
   const searchEl = useRef<HTMLInputElement>(null)
 

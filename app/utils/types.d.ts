@@ -1,10 +1,10 @@
-export interface UsersResponse {
+interface UsersResponse {
   total_count: number
   incomplete_results: boolean
   items: User[]
 }
 
-export interface User {
+interface User {
   login: string
   id: number
   node_id: string
@@ -26,9 +26,9 @@ export interface User {
   site_admin: boolean
 }
 
-export type GithubCategory = 'user' | 'org'
+type GithubCategory = 'user' | 'org'
 
-export interface GithubCategoryListItem {
+interface GithubCategoryListItem {
   label: string
   value: GithubCategory
 }

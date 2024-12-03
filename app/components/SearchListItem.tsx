@@ -1,6 +1,3 @@
-import { User } from "~/utils/types"
-
-
 interface Props {
   user: User
 }

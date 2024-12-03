@@ -1,14 +1,13 @@
 import { useEffect, useMemo, useState } from "react"
 import { useLocation } from "react-router"
 import { searchGithub } from "~/utils/api"
-import { GithubCategoryListItem, UsersResponse } from "~/utils/types"
 import SearchListItem from "./SearchListItem"
 import Pagination from "./Pagination"
 import { isGithubCategory } from "~/utils/helpers"
 
 const RESULTS_PER_PAGE = 20
 
-const SearchList: React.FC<{}> = (props) => {
+const SearchList: React.FC = () => {
   const location = useLocation()
 
   const [searchResult, setSearchResult] = useState<UsersResponse | null>(null)
