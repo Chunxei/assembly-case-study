@@ -80,7 +80,7 @@ const SearchList: React.FC<{}> = (props) => {
       </section>
 
       {showPagination && (
-        <div className="w-full contained">
+        <div className="w-full contained sticky bottom-0 bg-gray-950 py-4">
           <Pagination
             page={page}
             itemsPerPage={RESULTS_PER_PAGE}
