@@ -4,6 +4,8 @@ import { searchGithub } from "~/utils/api"
 import { GithubCategoryListItem, UsersResponse } from "~/utils/types"
 import SearchListItem from "./SearchListItem"
 import Pagination from "./Pagination"
+import { GITHUB_CATEGORIES } from "~/utils/constants"
+import { isGithubCategory } from "~/utils/helpers"
 
 const RESULTS_PER_PAGE = 20
 
@@ -36,7 +38,8 @@ const SearchList: React.FC<{}> = (props) => {
     const params = new URLSearchParams(location.search)
 
     const search = params.get('search') ?? ''
-    const category = decodeURIComponent(params.get('category') ?? '') as GithubCategoryListItem['value'] | ''
+    const _category = decodeURIComponent(params.get('category') ?? '').toLowerCase()
+    const category = isGithubCategory(_category) ? _category : 'user'
     const pageNo = parseInt(params.get('page') ?? '') || 1
 
     if (!search || !category) return

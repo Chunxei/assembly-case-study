@@ -1,17 +1,16 @@
 import { ChangeEventHandler, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { GITHUB_CATEGORIES } from "~/utils/constants";
+import { isGithubCategory } from "~/utils/helpers";
 
 import { GithubCategoryListItem } from "~/utils/types";
-
-const categoryValues = GITHUB_CATEGORIES.map((cat) => cat.value)
 
 const Header: React.FC = () => {
   const searchEl = useRef<HTMLInputElement>(null)
 
   const location = useLocation();
   const [search, setSearch] = useState('');
-  const [category, setCategory] = useState<GithubCategoryListItem['value']>(categoryValues[0])
+  const [category, setCategory] = useState<GithubCategoryListItem['value']>(GITHUB_CATEGORIES[0].value)
 
 
   const updateSearchString: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -30,8 +29,8 @@ const Header: React.FC = () => {
     const prevSearch = params.get('search') ?? ''
     setSearch(decodeURIComponent(prevSearch))
 
-    const prevCategory = params.get('category') as GithubCategoryListItem['value']
-    if (categoryValues.includes(prevCategory)) setCategory(prevCategory)
+    const prevCategory = decodeURIComponent(params.get('category') ?? '').toLowerCase()
+    if (isGithubCategory(prevCategory)) setCategory(prevCategory)
   }, [])
 
   useEffect(() => {
