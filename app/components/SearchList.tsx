@@ -4,6 +4,7 @@ import { searchGithub } from "~/utils/api"
 import SearchListItem from "./SearchListItem"
 import Pagination from "./Pagination"
 import { isGithubCategory } from "~/utils/helpers"
+import SearchResults from "./SearchResults"
 
 const RESULTS_PER_PAGE = 20
 
@@ -50,31 +51,7 @@ const SearchList: React.FC = () => {
       <section
         className="w-full appearance-none list-none flex-grow gap-4 flex flex-col pb-8 contained"
       >
-        {loading ? (
-          <div className="w-full flex-grow flex justify-center items-center">
-            <span className="text-xl text-slate-300 font-bold">
-              Loading...
-            </span>
-          </div>
-        ) : !!message.length ? (
-          <div className="w-full flex-grow flex justify-center items-center">
-            <span className="text-xl text-slate-300 font-bold">
-              {message}
-            </span>
-          </div>
-        ) : !searchResult?.items.length ? (
-          <div className="w-full flex-grow flex justify-center items-center">
-            <span className="text-xl text-slate-300 font-bold">
-              No results found for your search
-            </span>
-          </div>
-        ) : (
-          <div className="grid grid-cols-[repeat(auto-fit,_minmax(min(100%,_400px),_1fr))] auto-rows-[max-content] gap-4">
-            {searchResult?.items.map((user) => (
-              <SearchListItem user={user} key={user.id} />
-            ))}
-          </div>
-        )}
+        <SearchResults loading={loading} message={message} items={searchResult?.items ?? []} />
       </section>
 
       {showPagination && (
